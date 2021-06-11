@@ -1,20 +1,21 @@
 #include "sort.h"
 
 /**
- * bubble_sort - Sorts an array of integers with bubble sort algorithm
+ * insertion_sort_list - Sorts an array of integers with insertion sort
  * @array: Array of numbers that's going to be sorted
  * @size: Size of array
  * Return: Nothing, will sort and print when swap
  */
 
-void bubble_sort(int *array, size_t size)
+void insertion_sort_list(listint_t **list):
 {
 	unsigned int i, j, swap = 0;
 	int n;
+	listint_t *curr = *list
 
-	for (i = 0; i < size; i++)
+	for (i = 0; curr->next; i++)
 	{
-		for (j = 0; j < size - i - 1; j++)
+		for (j = ; ; j++)
 		{
 			n = array[j];
 
