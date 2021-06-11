@@ -7,27 +7,40 @@
  * Return: Nothing, will sort and print when swap
  */
 
-void insertion_sort_list(listint_t **list):
+void insertion_sort_list(listint_t **list)
 {
-	unsigned int i, j, swap = 0;
-	int n;
-	listint_t *curr = *list
+	listint_t *curr = *list, *prev = curr->prev, *previous, *current;
+	int p_n;
 
-	for (i = 0; curr->next; i++)
+	while (curr->next)
 	{
-		for (j = ; ; j++)
+		current = curr;
+		previous = prev;
+		while (previous && current->n < previous->n)
 		{
-			n = array[j];
+			p_n = previous->n;
+			previous->n = current->n;
+			current->n = p_n;
 
-			if (n > array[j + 1])
-			{
-				array[j] = array[j + 1];
-				array[j + 1] = n;
-				swap = 1;
-				print_array(array, size);
-			}
+			current = current->prev;
+			previous = current->prev;
 		}
-		if (!swap)
-			break;
+		curr = curr->next;
+		prev = curr->prev;
+	}
+}
+/**
+ * swap - Swaps nodes with previous ones
+ * @current: current node
+ */
+void swap(listint_t **current)
+{
+	listint_t *previous = current->prev;
+
+	while (previous && current->n < previous->n)
+	{
+		current->prev->next = current->next;
+		curr->next = curr->previous;
+		
 	}
 }
