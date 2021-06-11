@@ -1,5 +1,7 @@
 #include "sort.h"
 
+void swap(listint_t *n1, listint_t *n2);
+
 /**
  * insertion_sort_list - Sorts an array of integers with insertion sort
  * @array: Array of numbers that's going to be sorted
@@ -9,38 +11,32 @@
 
 void insertion_sort_list(listint_t **list)
 {
-	listint_t *curr = *list, *prev = curr->prev, *previous, *current;
-	int p_n;
+	listint_t *curr = *list;
 
-	while (curr->next)
+	while ((curr = curr->next))
 	{
-		current = curr;
-		previous = prev;
-		while (previous && current->n < previous->n)
+		while (curr->prev && curr->n < curr->prev->n)
 		{
-			p_n = previous->n;
-			previous->n = current->n;
-			current->n = p_n;
-
-			current = current->prev;
-			previous = current->prev;
+			swap(curr->prev, curr);
+			if (!curr->prev)
+				*list = curr;
+			print_list(*list);
 		}
-		curr = curr->next;
-		prev = curr->prev;
 	}
 }
 /**
  * swap - Swaps nodes with previous ones
- * @current: current node
+ * @n1: previous node to swap
+ * @n2: current node to swap
  */
-void swap(listint_t **current)
+void swap(listint_t *n1, listint_t *n2)
 {
-	listint_t *previous = current->prev;
-
-	while (previous && current->n < previous->n)
-	{
-		current->prev->next = current->next;
-		curr->next = curr->previous;
-		
-	}
+	n1->next = n2->next;
+	if (n2->next)
+		n2->next->prev = n1;
+	n2->next = n1;
+	n2->prev = n1->prev;
+	if (n2->prev)
+		n2->prev->next = n2;
+	n1->prev = n2;
 }
