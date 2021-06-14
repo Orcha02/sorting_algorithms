@@ -13,12 +13,10 @@ void print_quick_sort(int *array, size_t size, int *o_array, size_t o_size);
 void print_quick_sort(int *array, size_t size, int *o_array, size_t o_size)
 {
 	unsigned int i = 0, j = 0;
-	int p, n;
+	int p = array ? array[size - 1] : 0, n;
 
 	if (!array || size <= 1)
 		return;
-
-	p = array[size - 1];
 
 	for (j = 0; j < size; j++)
 		if ((array[j] <= p && array[i] != array[j]) || j == size - 1)
