@@ -9,10 +9,7 @@ void swap(listint_t *n1, listint_t *n2);
 
 void insertion_sort_list(listint_t **list)
 {
-	listint_t *curr = *list;
-
-	if (list == NULL || *list == NULL || (*list)->next == NULL)
-		return;
+	listint_t *curr = list ? *list : 0;
 
 	while (list && *list && (curr = curr->next))
 	{
