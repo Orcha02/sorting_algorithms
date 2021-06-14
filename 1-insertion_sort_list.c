@@ -4,16 +4,14 @@ void swap(listint_t *n1, listint_t *n2);
 
 /**
  * insertion_sort_list - Sorts an array of integers with insertion sort
- * @array: Array of numbers that's going to be sorted
- * @size: Size of array
- * Return: Nothing, will sort and print when swap
+ * @list: list of numbers that's going to be sorted
  */
 
 void insertion_sort_list(listint_t **list)
 {
 	listint_t *curr = *list;
 
-	while ((curr = curr->next))
+	while (list && *list && (curr = curr->next))
 	{
 		while (curr->prev && curr->n < curr->prev->n)
 		{
