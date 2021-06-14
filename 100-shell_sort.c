@@ -9,7 +9,7 @@ void shell_sort(int *array, size_t size)
 	int current;
 	size_t i, j, gap = 1;
 
-	if (!array || size <= 1)
+	if (!array || size < 2)
 		return;
 
 	while (gap < size / 3)
@@ -21,10 +21,10 @@ void shell_sort(int *array, size_t size)
 		{
 			current = array[i];
 			j = i;
-			while (j >= gap && array[i - j] > current)
+			while (j >= gap - 1 && array[j - gap] > current)
 			{
 				array[j] = array[j - gap];
-				j =  j - gap;
+				j = j - gap;
 			}
 			array[j] = current;
 		}
