@@ -4,27 +4,34 @@ void merge(int *array_merged, int *a1, size_t l1, int *a2, size_t l2);
 void merge_sort_array(int *sorted_array, int *array, size_t size);
 
 /**
-
-
+ * merge_sort - create a copy of the array before to sort
+ * @array: array to be sorted
+ * @size: size of the array
 */
 void merge_sort(int *array, size_t size)
 {
-	int *cp_array = malloc(sizeof(int) * size);
+	int *cp_array;
 	size_t i;
 
-	if (array && size > 0 && cp_array)
-	{
-		for (i = 0; i < size; i++)
-			cp_array[i] = array[i];
-		merge_sort_array(array, cp_array, size);
-		free(cp_array);
-	}
+	if (!array || size < 1)
+		return;
+
+	cp_array = malloc(sizeof(int) * size);
+
+	if (!cp_array)
+		exit(1);
+
+	for (i = 0; i < size; i++)
+		cp_array[i] = array[i];
+	merge_sort_array(array, cp_array, size);
+	free(cp_array);
 }
 
 /**
- * ort - This function sorts an array of integers
+ * merge_sort_array - This function sorts an array of integers
  * in ascending order and print for each swap
- * @array: List of numbers
+ * @sorted_array: sorted array
+ * @array: array of numbers
  * @size: Size of array
  */
 void merge_sort_array(int *sorted_array, int *array, size_t size)
@@ -32,12 +39,18 @@ void merge_sort_array(int *sorted_array, int *array, size_t size)
 	if (!array || size < 2)
 		return;
 
-	merge_sort_array(sorted_array, array, size/2);
-	merge_sort_array(sorted_array + size/2, array + size/2, size - size/2);
-	merge(sorted_array, array, size/2, array + size/2, size - size/2);
+	merge_sort_array(sorted_array, array, size / 2);
+	merge_sort_array(sorted_array + size / 2, array + size / 2, size - size / 2);
+	merge(sorted_array, array, size / 2, array + size / 2, size - size / 2);
 }
 
 /**
+ * merge - compare two sorted arrays and merge
+ * @array_merged: merge sort of a1 and a2
+ * @a1: first array to merge
+ * @l1: size of a1
+ * @a2: second array to merge
+ * @l2: size of a2
 */
 void merge(int *array_merged, int *a1, size_t l1, int *a2, size_t l2)
 {
