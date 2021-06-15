@@ -34,7 +34,7 @@ void print_quick_sort(int *array, size_t size, int *o_array, size_t o_size)
 		n = array[i];
 		array[i] = array[j];
 		array[j] = n;
-		print_array(array, size);
+		print_array(o_array, o_size);
 		i++, j--;
 	}
 	if (i == j && array[i] < p)
