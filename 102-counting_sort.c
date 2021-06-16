@@ -35,7 +35,7 @@ void counting_sort(int *array, size_t size)
 	for (i = 0; i < size; i++)
 	{/*Places object at correct position and decreases the count by one*/
 		output[count[array[i]] - 1] = array[i];
-		count[array[i]]--;
+		--count[array[i]];
 	}
 	/*Copy output array so it now contains the sorted one*/
 	for (i = 0; i < size; i++)
