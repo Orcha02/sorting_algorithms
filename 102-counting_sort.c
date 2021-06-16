@@ -20,7 +20,10 @@ void counting_sort(int *array, size_t size)
 		return;
 	output = malloc(size * sizeof(int));
 	if (output == NULL)
+	{
+		free(count);
 		return;
+	}
 	for (i = 0; i < (max); i++)
 		count[i] = 0;
 	for (i = 0; i <= (size - 1); i++)
