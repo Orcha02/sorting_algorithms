@@ -24,7 +24,7 @@ void counting_sort(int *array, size_t size)
 		free(count);
 		return;
 	}
-	for (i = 0; i < (max); i++)
+	for (i = 0; i <= max; i++)
 		count[i] = 0;
 	for (i = 0; i <= (size - 1); i++)
 		count[array[i]] = count[array[i]] + 1; /*Counts instances*/
@@ -37,7 +37,7 @@ void counting_sort(int *array, size_t size)
 		output[count[array[i]] - 1] = array[i];
 		count[array[i]]--;
 	}
-	/*Copy output array so it now contains the sorted characters*/
+	/*Copy output array so it now contains the sorted one*/
 	for (i = 0; i < size; i++)
 		array[i] = output[i];
 	free(count);
